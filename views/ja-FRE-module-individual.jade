@@ -32,7 +32,7 @@ block content
           .large-12.columns.left
             if (special)
               p!=special
-            p Save this code in a text file called <code>#{module}.js</code>:
+            p <code>#{module}.js</code>という名前のファイルを作成し、以下の内容を書き込んで保存してください。
             pre.prettyprint#exampleCode
               code.
                 #{code}
@@ -43,7 +43,7 @@ block content
       // mixins for within the includes
       mixin num_col(num)
         .large-12.columns
-          p.moduleStep Step #{num}
+          p.moduleStep 手順#{num}
 
       mixin normal_row(number, imgsrc, text)
         .row
@@ -83,9 +83,9 @@ block content
             if (special)
               p!=special
             p
-              | Make a directory inside your "tessel-code" folder: enter
+              | 以下のコマンドを入力して、「tessel-code」ディレクトリの中に、もうひとつディレクトリを作ってください：
               | <code><cli>mkdir #{thismod}</cli></code>
-              | into your command line, then change directory into that folder:
+              | いま作ったディレクトリの中に移ってください。
               | <code><cli>cd #{thismod}</cli></code>
         .row
           .large-12.columns
@@ -108,18 +108,10 @@ block content
       - var moduleSpecial_filepath = s3url+"modules_special/"
       - var moduleDocs_filepath = "https://github.com/tessel/"
 
-      - var plugIn1 = "Plug the "
-      - var portA = " module into Tessel <b>port A</b> "
-      - var portC = " module into Tessel <b>port C</b> "
-      - var plugIn2End = "with the hexagon/icon side down and the electrical components on the top, then plug Tessel into your computer via USB."
-      - var plugIn2A = portA + plugIn2End;
-      - var plugIn2C = portC + plugIn2End;
+      - var plugIn = "#{module}モジュールをTesselの<b>ポート#{port}</b>に挿しこんでください。このとき、六角形のTesselロゴの面が裏側、電子部品が有る側を表側になるようにしてください。最後に、TesselとパソコンをUSBケーブルで接続してください。"
+      - var install = "以下のコマンドを入力して、パッケージをインストールしてください。<code><cli>npm install #{package}</cli></code>"
 
-      - var install1 = "Install by typing <code><cli>npm install "
-      - var install2 = "</code></cli> into the command line."
-
-      - var push1 = "In your command line, <code><cli>tessel run "
-      - var push2 = ".js</cli></code><br/>"
+      - var push = "以下のコマンドを入力してください。<code><cli>tessel run #{module}.js</cli></code><br/>"
 
       - var moreInfo1 = "<br/><br/>To see what else you can do with the "
       - var moreInfo2 = " module, see the module docs <a href='"
@@ -131,33 +123,33 @@ block content
 
       // workaround mixins for fake dynamic includes
       mixin accelerometer
-        include moduleFREs/_accelerometer
+        include moduleFREs/ja-_accelerometer
       mixin ambient
-        include moduleFREs/_ambient
+        include moduleFREs/ja-_ambient
       mixin audio
-        include moduleFREs/_audio
+        include moduleFREs/ja-_audio
       mixin ble
-        include moduleFREs/_ble
+        include moduleFREs/ja-_ble
       mixin camera
-        include moduleFREs/_camera
+        include moduleFREs/ja-_camera
       mixin climate
-        include moduleFREs/_climate
+        include moduleFREs/ja-_climate
       mixin gprs
-        include moduleFREs/_gprs
+        include moduleFREs/ja-_gprs
       mixin gps
-        include moduleFREs/_gps
+        include moduleFREs/ja-_gps
       mixin ir
-        include moduleFREs/_ir
+        include moduleFREs/ja-_ir
       mixin microsd
-        include moduleFREs/_microsd
+        include moduleFREs/ja-_microsd
       mixin nrf
-        include moduleFREs/_nrf
+        include moduleFREs/ja-_nrf
       mixin relay
-        include moduleFREs/_relay
+        include moduleFREs/ja-_relay
       mixin rfid
-        include moduleFREs/_rfid
+        include moduleFREs/ja-_rfid
       mixin servo
-        include moduleFREs/_servo
+        include moduleFREs/ja-_servo
 
       .row
         .large-12.columns

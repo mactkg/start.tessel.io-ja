@@ -10,13 +10,13 @@
 //- +see_video("http://youtu.be/JLZzLyH9jc4")
 +make_directory(i, thismod)
 - i++
-+normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", plugIn1 + thismod + plugIn2A)
++normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", plugIn.replace('#{module}', thismod).replace('#{port}', 'A'))
 - i++
-+normal_row(i, moduleCorners_filepath + thismod + ".jpg", install1 + pkg + install2)
++normal_row(i, moduleCorners_filepath + thismod + ".jpg", install.replace('#{package}', pkg))
 - i++
 .row
 +displayCode(i, code.code, thismod)
 - i++
-+normal_row(i, moduleGifs_filepath + thismod + ".gif", push1 + thismod + push2 + doThis + bonus + moreInfo)
++normal_row(i, moduleGifs_filepath + thismod + ".gif", push.replace('#{module}', thismod) + doThis + bonus + moreInfo)
 - i++
 +seeForums(i, thismod, thismod)
