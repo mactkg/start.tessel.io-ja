@@ -3,13 +3,13 @@ extends ja-layout
 block content
   .row
     .large-12.columns.fre-container
-      h1 Some useful commands...
+      h1 コマンドの使い方
 
-      p You can look at all the options of Tessel's CLI by running
+      p TesselのCLIの全てのオプションを見るには、以下のコマンドを実行してください。
       code
         cli tessel --help
 
-      p Here are a few of the most useful ones:
+      p これらのオプションのうち、よく使う物を以下に説明します：
 
   .row
     .large-12.columns
@@ -17,10 +17,13 @@ block content
   .row
     .large-12.columns
       h2
-        code tessel run <script.js | path/to/folder>
-      p This command loads code into RAM on Tessel. When Tessel is reset (or the script ends with CTRL + C), Tessel loses the code. This command is useful for running code while developing, and will be used throughout this tutorial.
+        code tessel run &lt;script.js | フォルダーへのパス&gt;
+      p このコマンドを実行すると、あなたの書いたプログラムがTesselのRAMに転送され、実行されます。Tesselがリセットされるか、キーボードのCtrl-Cを押してこのコマンドの実行を停止すると、Tesselに転送されたプログラムは消えてしまいます。このコマンドは、開発中にプログラムを実行してみるのに適しています。このチュートリアルでも、全般にこのコマンドを使います。
 
-      p This command is shown in the <a href="/blinky">blinky example.</a>
+      p
+        以下のコマンドの例は、
+        a(href="/ja/blinky") blinky
+        の項で使いました。
 
       code
         cli tessel run blinky.js
@@ -40,10 +43,10 @@ block content
   .row
     .large-12.columns
       h2
-        code tessel push <script.js | path/to/folder>
-      p This command saves code into flash memory on Tessel. This means that Tessel auto-runs this code when powered. The code will stay on here even if you reset Tessel. If you "tessel run" while you have code saved in Flash, the new code will run until the Tessel is reset, and then Tessel will switch back to the code from Flash.
+        code tessel push &lt;script.js | フォルダーへのパス&gt;
+      p このコマンドを実行すると、あなたの書いたプログラムがTesselのフラッシュメモリに書き込まれます。Tesselの電源を入れると、このプログラムが自動的に実行されます。Tesselをリセットしても、プログラムは消えません。プログラムが書き込まれている状態で「tessel run」コマンドを実行すると、別のプログラムがTesselに転送されて実行されますが、Tesselをリセットするとフラッシュメモリに書き込まれている元のプログラムが実行されます。
 
-      p From your "tessel-code" directory, where you saved blinky.js,
+      p 「blinky.js」を保存した「tessel-code」ディレクトリからなら、以下のように実行します。
       code
         cli tessel push blinky.js
 
@@ -54,7 +57,7 @@ block content
           | >> Running script ...<br/>
           | >> Finished deployment <br/>
 
-      p While Tessel is running code from flash, console logs will be hidden by default. To see output after a "push" command, enter
+      p フラッシュメモリに書き込まれているプログラムが動作しているときは、そのままではログメッセージを見ることができません。「tessel push」コマンドを実行したあと、ログメッセージを見るには、以下のコマンドを実行してください。
       code
         cli tessel logs
 
@@ -70,10 +73,10 @@ block content
     .large-12.columns
       h2
         code tessel erase
-      p This command erases any JavaScript code saved to Tessel's flash memory. The firmware is left unchanged. If you push buggy code to Tessel, an erase can remove your code.
+      p このコマンドを実行すると、Tesselのフラッシュメモリに書き込まれているプログラムが消去されます。もちろん、Tesselのファームウェアはそのままです。バグのあるプログラムを書き込んでしまったときは、このコマンドの出番です。
 
-      p Try unplugging and replugging in your Tessel after you have loaded the blinky code in Flash (tessel push). After a few seconds, you should see the LEDs start to blink.
-      p Now run
+      p 試してみましょう。「tessel push」コマンドを使って、上記のblinkyプログラムをTesselに書き込んでから、TesselをUSBコネクタからはずして、もういちど接続してください。数秒後、LEDランプが点滅し始めます。
+      p つぎに、以下のコマンドを実行してください。
       code
         cli tessel erase
 
@@ -81,12 +84,12 @@ block content
         .console-output
           | >> Attempting to erase filesystem <br/>
 
-      p This will erase the blinky code from Tessel, and the LEDs will stop blinking.
+      p Tesselのフラッシュメモリのblinkyのプログラムが消去され、LEDランプは点滅しなくなります。
 
 
 block bottom_nav
   .row
     .large-6.columns.left
-      a.bottomButton(href="/tweet" class="button") Prev: Tweet
+      a.bottomButton(href="/tweet" class="button") 戻る: ツイートする
     .large-6.columns.right
-      a.bottomButton.right(href="/finished" class="button") Next: Finished!
+      a.bottomButton.right(href="/finished" class="button") 進む: Finished!

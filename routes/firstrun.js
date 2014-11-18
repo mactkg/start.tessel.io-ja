@@ -24,7 +24,7 @@ exports.usage = function (req, res) {
 	res.render('FRE-usage', {title: 'Tessel CLI usage', page:"usage"});
 };
 exports.ja_usage = function (req, res) {
-	res.render('ja-FRE-usage', {title: 'Tessel CLI usage', page:"usage"});
+	res.render('ja-FRE-usage', {title: 'コマンドの使い方', page:"usage"});
 };
 
 //try a module page
