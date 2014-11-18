@@ -46,7 +46,7 @@ exports.tweet = function (req, res) {
 	res.render('FRE-tweet.jade', {title: 'Tessel\'s First Tweet', page: 'tweet'});
 };
 exports.ja_tweet = function (req, res) {
-	res.render('ja-FRE-tweet.jade', {title: 'Tessel\'s First Tweet', page: 'tweet'});
+	res.render('ja-FRE-tweet.jade', {title: 'Tesselではじめてのツイート', page: 'tweet'});
 };
 
 exports.finished = function (req, res) {
