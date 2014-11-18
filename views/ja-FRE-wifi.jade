@@ -5,38 +5,38 @@ block content
     .large-12.columns.fre-container
       .row
         .large-12.columns
-          h1 Connect Tessel to Wifi
+          h1 Tesselを無線LANに接続する
       br
       .row
         .large-12.columns
-          p Tessel can only connect to <b>802.11b/g</b> networks using <b>channels 1 through 11</b>. The wifi chip does not support 802.11n or channels 12 - 14. If you are having trouble connecting, make sure the router has b/g mode enabled and isn't using channels 12, 13, or 14.
-          p <b>To connect to a new network,</b> enter in your command line (without brackets)
+          p Tesselは、無線LANの<b>802.11bおよびg</b>のチャンネルのうち、<b>1番から11番までのみ</b>に接続することができます。内蔵する無線LANチップは、802.11nや、チャンネルの12番から14番では動作しません。接続しようとしているルータが、802.11bまたはgに対応していて、チャンネルの1番から11番のいずれかを使用していることを確認してください。
+          p <b>無線LANに接続する</b>には、以下のコマンドを入力してください（カギカッコは、そのまま入力しないでください）。
           code
-            cli tessel wifi -n [network name] -p [password] -s [security type*]
-          i <code>*</code>The security type flag is optional; default is wpa2.<br/><br/>
+            cli tessel wifi -n [ネットワーク名] -p [パスワード] -s [セキュリティタイプ*]
+          i <code>*</code>セキュリティタイプの指定はオプションです。指定しない場合は「wpa2」とみなします。<br/><br/>
       .row
         .large-12.columns
           .greyBar(style="height:2px;")
       .row
         .large-6.columns
-          p Tessel will blink the yellow status light while connecting, and will leave the yellow light on if it connects. Tessel saves network credentials and tries to reconnect automatically on startup.
-          p To check whether you're connected, run
+          p Tesselの黄色いランプは、接続処理中は点滅し、接続されると点灯のままになります。Tesselは入力されたパスワードを記憶するので、Tesselを次に起動すると自動的にネットワークに接続します。
+          p 接続されているかどうかを調べるには、以下のコマンドを入力してください。
           code
             cli tessel wifi -l
-          p This lists available wifi networks and will also show your connection status.
-          p If the red status light goes on, it means Tessel tried to connect to a network but was unable to succeed. The red LED also turns on if the wifi connection drops. 
+          p 無線LANのネットワークの一覧と、接続の状態が表示されます。
+          p 無線LANに接続しようとしたけれど接続できなかった場合には、赤いランプが点灯します。また、接続済みのネットワークが切断された場合にも、赤いランプが点灯します。
           ul 
-            li Steady yellow LED = Tessel is connected to wifi
-            li Steady red LED = Tessel is not connected to wifi
+            li 黄色いランプが点灯　＝　無線LANに接続されている
+            li 赤いランプが点灯　＝　無線LANに接続されていない
 
-          p All 4 LEDS (red, blue, green, and yellow) are accessible through Tessel's <a href="https://tessel.io/docs/hardwareAPI#api-array-Pin-tessel-led" target="_blank">hardware API</a>. If user pushed code is changing the state of the yellow/red LEDs, they will no longer be reliable indicators of Wifi state.
+          p 4個すべてのランプ（赤青緑黄）は、Tesselの<a href="https://tessel.io/docs/hardwareAPI#api-array-Pin-tessel-led" target="_blank">ハードウェアAPI</a>からアクセスすることができます。もしも、ユーザーが書き込んだプログラムが黄色または赤のランプを制御している場合は、無線LANの状態の表示としては信頼できません。
         .large-6.columns
           img(src="#{s3url}wifi.JPG").constrain
       .row
         .large-12.columns
           .greyBar(style="height:2px;")
-          p Here is an example of requesting a website over Tessel's Wifi connection:
-          p Save the following code in a file called <code>wifi.js</code>:
+          p 以下のプログラムは、無線LAN経由でウェブサイトの内容を取得する例です：
+          p 以下の内容を、<code>wifi.js</code>という名前のファイルに保存してください：
           pre.prettyprint#exampleCode
             code.
               var http = require('http');
@@ -64,37 +64,38 @@ block content
                 });
               });
 
-          p Run the code on your Tessel by typing this in the terminal:
+          p 端末上で以下のコマンドを入力して、このプログラムをTesselの上で動かしてください：
           p <code><cli>tessel run wifi.js</cli></code>
-          p Watch Tessel ping the website in your console!
+          p Tesselがウェブサイトと通信するようすを、端末で観察してください。
 
       .row
         .large-12.columns
           .greyBar(style="height:2px;")
           
-          p Tessel's wifi can also be controlled programatically. The full API docs can be found 
-            a(href="https://tessel.io/docs/wifi") here.
-          p Save the following in a file called <code>wifi-control.js</code>:
+          p 無線LANをプログラムから制御することもできます。このAPIについての詳細な文書は、
+            a(href="https://tessel.io/docs/wifi") ここにあります。
+          p 以下の内容を、<code>wifi-control.js</code>という名前のファイルに保存してください：
           pre.prettyprint#exampleCode
             code.
-              /* the wifi-cc3000 library is bundled in with Tessel's firmware,
-               * so there's no need for an npm install. It's similar
-               * to how require('tessel') works.
+              /* wifi-cc3000というライブラリをrequireしていますが、
+               * このライブラリはTesselのファームウェアに組み込まれているので、
+               * npm installする必要はありません。
+               * これは、require('tessel')でも同様です。
                */ 
               var wifi = require('wifi-cc3000');
-              var network = '#####'; // put in your network name here
-              var pass = '#####'; // put in your password here, or leave blank for unsecured
-              var security = 'wpa2'; // other options are 'wep', 'wpa', or 'unsecured'
+              var network = '#####'; // ネットワーク名を入れてください。
+              var pass = '#####'; // パスワードを入れてください。パスワード無しの場合は、カラ文字列にしてください。
+              var security = 'wpa2'; // 他に「wep」「wpa」「unsecured」が指定できます。パスワード無しの場合は「unsecured」を指定してください。
 
-              // connect to the wifi network
-              // check if the wifi chip is busy (currently trying to connect), if not, try to connect
+              // 無線LANに接続する。
+              // 無線LANチップがビジー（すでに接続しようとしている）かどうかをチェックし、ビジーでなければ接続する。
               function tryConnect(){
                 if (!wifi.isBusy()) {
                   connect();
                 } else {
-                  // The cc3k is set up to automatically try to connect on boot. 
-                  // For the first few seconds of program bootup, you'll always 
-                  // see the wifi chip as being "busy"
+                  // 無線LANチップは、起動時に自動的に接続するように設定してあります。
+                  // このため、起動直後に接続を指示すると、いつも必ずビジー
+                  // になるでしょう。
                   console.log("is busy, trying again");
                   setTimeout(function(){
                     tryConnect();
@@ -112,26 +113,26 @@ block content
               }
 
               wifi.on('connect', function(err, data){
-                // you're connected
+                // 無線LANに接続された
                 console.log("connect emitted", err, data);
               });
 
               wifi.on('disconnect', function(err, data){
-                // wifi dropped, probably want to call connect() again
+                // 切断された。必要ならばもういちどconnect()を呼んでください。
                 console.log("disconnect emitted", err, data);
               })
 
               wifi.on('timeout', function(err){
-                // tried to connect but couldn't, retry
+                // 接続しようとしたが、接続できなかった。リトライする。
                 console.log("timeout emitted"); 
                 connect();
               });
 
               wifi.on('error', function(err){
-                // one of the following happened
-                // 1. tried to disconnect while not connected
-                // 2. tried to disconnect while in the middle of trying to connect
-                // 3. tried to initialize a connection without first waiting for a timeout or a disconnect
+                // 以下のいずれかが起きた。
+                // 1. 接続されていないのに、切断しようとした。
+                // 2. 接続しようとしている最中に、切断しようとした。
+                // 3. タイムアウトまたは切断されていないのに、接続しようとした。
                 console.log("error emitted", err);
               });
 
@@ -141,12 +142,14 @@ block content
           .greyBar(style="height:2px;")
       .row
         .large-12.columns
-          p <b>If you run into errors:</b> First, check to make sure the yellow status light is on. If it is not, you are not connected to Wifi. Try power cycling your Tessel and then run the <code>tessel wifi</code> command again.
-          p If you're still having trouble, please log your error on the <a href="http://forums.tessel.io/category/wifi">Wifi forums</a>.
+          p <b>エラーになった場合：</b>黄色いランプが点灯していることを確認して下さい。もしも点灯していない場合は、無線LANに接続されていません。Tesselの電源をいったん切ってから入れなおし、<code>tessel wifi</code>というコマンドをもういちど実行してください。
+          p これでも問題が解消しない場合は、
+            a(href="http://forums.tessel.io/category/wifi") 無線LANについての掲示板
+            で相談してください。
 
 block bottom_nav
   .row
     .large-5.columns.left
-      a.bottomButton(href="/modules" class="button") Prev: Add modules
+      a.bottomButton(href="/modules" class="button") 戻る：Add modules
     .large-6.columns.right
-      a.bottomButton.right(href="/tweet" class="button") Next: Tweet
+      a.bottomButton.right(href="/tweet" class="button") 進む：Tweet

@@ -39,7 +39,7 @@ exports.wifi = function (req, res) {
 	res.render('FRE-wifi.jade', {title: 'Connecting to Wifi', page: 'wifi'});
 };
 exports.ja_wifi = function (req, res) {
-	res.render('ja-FRE-wifi.jade', {title: 'Connecting to Wifi', page: 'wifi'});
+	res.render('ja-FRE-wifi.jade', {title: '無線LANに接続する', page: 'wifi'});
 };
 
 exports.tweet = function (req, res) {
