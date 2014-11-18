@@ -71,11 +71,9 @@ var githubCode = {
 
 function modulePage(req, res) {
   var module = req.params.slug;
-  var lang = req.params.lang;
-  if (lang == 'ja') {
-    lang = 'ja-';
-  } else {
-    lang = '';
+  var prefix = '';
+  if (req.params.lang == 'ja') {
+    prefix = 'ja-';
   }
 
   // update on anything older than 1 hour
@@ -90,10 +88,10 @@ function modulePage(req, res) {
       code = code.replace(' // Replace \'../\' with \'' + githubCode[module].replace + '\' in your own code', '');
       githubCode[module].code = code;
       githubCode[module].updated = Date.now();
-      res.render(lang + 'FRE-module-individual', {title: module, displayModule: module, page: module, code: githubCode[module]});
+      res.render(prefix + 'FRE-module-individual', {title: module, displayModule: module, page: 'modules/' + module, code: githubCode[module]});
     });
   } else {
-    res.render(lang + 'FRE-module-individual', {title: module, displayModule: module, page: module, code: githubCode[module]});
+    res.render(prefix + 'FRE-module-individual', {title: module, displayModule: module, page: 'modules/' + module, code: githubCode[module]});
   }
 }
 
