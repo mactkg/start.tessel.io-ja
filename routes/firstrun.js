@@ -2,6 +2,9 @@
 exports.index = function (req, res) {
 	res.redirect('/install');
 };
+exports.ja_index = function (req, res) {
+	res.redirect('/ja/install');
+};
 
 // Installation page
 exports.install = function (req, res) {
