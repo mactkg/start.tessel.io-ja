@@ -120,12 +120,8 @@ block content
 
       - var plugIn = "#{module}モジュールをTesselの<b>ポート#{port}</b>に挿しこんでください。このとき、六角形のTesselロゴの面が裏側、電子部品が有る側を表側になるようにしてください。最後に、TesselとパソコンをUSBケーブルで接続してください。"
       - var install = "以下のコマンドを入力して、パッケージをインストールしてください。<code><cli>npm install #{package}</cli></code>"
-
       - var push = "以下のコマンドを入力してください。<code><cli>tessel run #{module}.js #{option}</cli></code><br/>"
-
-      - var moreInfo1 = "<br/><br/>To see what else you can do with the "
-      - var moreInfo2 = " module, see the module docs <a href='"
-      - var moreInfo3 = "', target=0>here</a>."
+      - var moreInfo = "<br/><br/>#{module}モジュールの機能についてもっと知りたい場合は、<a href=\"#{href}\" target=0>モジュールのドキュメント</a>を参照してください。"
 
       // include all the modules
       //each val in moduleList
