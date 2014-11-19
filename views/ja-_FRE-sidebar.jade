@@ -3,11 +3,11 @@
 div#fre-sidebar
   ul(class="side-nav")
     li(class=(page === "install" ? "active" : ""))
-      a(href="/ja/install") 1. install
+      a(href="/ja/install") 1. インストール
     li( class=(page === "blinky" ? "active" : ""))
-      a(href="/ja/blinky") 2. blinky
+      a(href="/ja/blinky") 2. 点滅
     li( class=(page === "modules" ? "active" : ""))
-      a(href="/ja/modules") 3. modules
+      a(href="/ja/modules") 3. モジュール
         //ul
         mixin moduleLink(val)
           li( style="padding-left:10px;" class=(page === ('modules/' + val) ? "active" : ""))
@@ -16,10 +16,10 @@ div#fre-sidebar
         each val in moduleList
           +moduleLink(val)
     li( class=(page === "wifi" ? "active" : ""))
-      a(href="/ja/wifi") 4. wifi
+      a(href="/ja/wifi") 4. 無線LAN
     li( class=(page === "tweet" ? "active" : ""))
-      a(href="/ja/tweet") 5. tweet
+      a(href="/ja/tweet") 5. ツイート
     li( class=(page === "usage" ? "active" : ""))
-      a(href="/ja/usage") 6. usage
+      a(href="/ja/usage") 6. コマンド
     li( class=(page === "finished" ? "active" : ""))
-      a(href="/ja/finished") 7. finished
+      a(href="/ja/finished") 7. 終わり
