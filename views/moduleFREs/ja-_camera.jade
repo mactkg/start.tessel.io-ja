@@ -10,11 +10,11 @@
 //- +see_video("http://youtu.be/JLZzLyH9jc4")
 +make_directory(i, thismod)
 - i++
-+normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", plugIn.replace('#{module}', thismod).replace('#{port}', 'A'))
++normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", render(plugIn, {'module': thismod, 'port': 'A'}))
 - i++
-+normal_row(i, moduleCorners_filepath + thismod + ".jpg", install.replace('#{package}', pkg))
++normal_row(i, moduleCorners_filepath + thismod + ".jpg", render(install, {'package': pkg}))
 - i++
 +displayCode(i, code.code, thismod)
 - i++
-+normal_row(i, moduleGifs_filepath + thismod + ".gif", push.replace('#{module}', thismod + 'XXXXXXXXXXXXXXXXXXXXXXXXXXX --upload-dir ./') + "The flag <span class='inlineCode'>--upload-dir</span> lets you specify where to save the image. Uploading to <span class='inlineCode'>.</span> saves the image in the current directory. Otherwise set <span class='inlineCode'>process.env.TESSEL_UPLOAD_DIR</span> to run without the flag.<br/><br/>" + doThis + bonus + moreInfo)- i++
++normal_row(i, moduleGifs_filepath + thismod + ".gif", render(push, {'module': thismod, 'option': '--upload-dir ./'}) + "The flag <span class='inlineCode'>--upload-dir</span> lets you specify where to save the image. Uploading to <span class='inlineCode'>.</span> saves the image in the current directory. Otherwise set <span class='inlineCode'>process.env.TESSEL_UPLOAD_DIR</span> to run without the flag.<br/><br/>" + doThis + bonus + moreInfo)- i++
 +seeForums(i, thismod, thismod)

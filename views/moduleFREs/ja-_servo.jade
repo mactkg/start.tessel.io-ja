@@ -26,12 +26,12 @@
 - i++
 +normal_row(i, s3url+"modules_special/servo_power.png", "Plug 5V adapter into the barrel jack on the servo module, then plug into wall power.")
 - i++
-+normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", plugIn.replace('#{module}', thismod).replace('#{port}', 'A'))
++normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", render(plugIn, {'module': thismod, 'port': 'A'}))
 - i++
-+normal_row(i, moduleCorners_filepath + thismod + ".jpg", install.replace('#{package}', pkg))
++normal_row(i, moduleCorners_filepath + thismod + ".jpg", render(install, {'package': pkg}))
 - i++
 +displayCode(i, code.code, thismod)
 - i++
-+normal_row(i, moduleGifs_filepath + thismod + ".gif", push.replace('#{module}', thismod) + doThis + bonus + moreInfo)
++normal_row(i, moduleGifs_filepath + thismod + ".gif", render(push, {'module': thismod}) + doThis + bonus + moreInfo)
 - i++
 +seeForums(i, thismod, thismod)

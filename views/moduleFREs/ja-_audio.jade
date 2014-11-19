@@ -13,14 +13,14 @@
 - i++
 +normal_row(i, moduleSpecial_filepath +  "audio-headphones" + ".jpeg", "Plug in headphones or a speaker to the Headphones/Line out jack on your module. (You can also plug in a microphone to Line in, or just use the Mic built into the module.)")
 - i++
-+normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", plugIn.replace('#{module}', thismod).replace('#{port}', 'A'))
++normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", render(plugIn, {'module': thismod, 'port': 'A'}))
 - i++
-+normal_row(i, moduleCorners_filepath + thismod + ".jpg", install.replace('#{package}', pkg))
++normal_row(i, moduleCorners_filepath + thismod + ".jpg", render(install, {'package': pkg}))
 - i++
 +displayCode(i, code.code, thismod)
 - i++
 +normal_row(i, moduleSpecial_filepath + "config_button" + ".jpg", "Locate the config button on Tessel. You'll be holding down this button to record sound.")
 - i++
-+normal_row(i, moduleGifs_filepath + thismod + ".gif", push.replace('#{module}', thismod) + doThis + bonus + moreInfo)
++normal_row(i, moduleGifs_filepath + thismod + ".gif", render(push, {'module': thismod}) + doThis + bonus + moreInfo)
 - i++
 +seeForums(i, thismod, thismod)

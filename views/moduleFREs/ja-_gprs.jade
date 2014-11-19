@@ -14,13 +14,13 @@
 - i++
 +normal_row(i, moduleSpecial_filepath +  "gprs-3v" + ".jpeg", "Make sure the Power select jumper in the top right corner of the module is set to 3.3V. You may have to pull off the jumper pin from its location at 'External' and move it to 3.3V.")
 - i++
-+normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", plugIn.replace('#{module}', thismod.toUpperCase()).replace('#{port}', 'A'))
++normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", render(plugIn, {'module': thismod.toUpperCase(), 'port': 'A'}))
 - i++
-+normal_row(i, moduleCorners_filepath + thismod + ".jpg", install.replace('#{package}', pkg))
++normal_row(i, moduleCorners_filepath + thismod + ".jpg", render(install, {'package': pkg}))
 - i++
 +displayCode(i, code.code, thismod)
 - i++
-+normal_row(i, moduleGifs_filepath + thismod + ".gif", "Replace '##########' in the code with a phone number to text (including country code) and save again.<p>" + push.replace('#{module}', thismod) + doThis + bonus + moreInfo)
++normal_row(i, moduleGifs_filepath + thismod + ".gif", "Replace '##########' in the code with a phone number to text (including country code) and save again.<p>" + render(push, {'module': thismod}) + doThis + bonus + moreInfo)
 - i++
 +normal_row(i, s3url+"modules_clipped/" + "gprs-external-power" + ".jpg", "The GPRS module can be externally powered through the External power pins. This allows the module to draw more current and get a better connection to the cell network. If you're seeing the Tessel become unresponsive after running the GPRS module, switch to external power.<br/><br/>First switch the jumper in the green area to connect External the 3.3V pins. Then connect an external GND to one of the two black arrows in the pink circle and external power to one of the two red arrows.")
 - i++

@@ -11,12 +11,12 @@
 //- +see_video("http://youtu.be/JLZzLyH9jc4")
 +make_directory(i, thismod, "<b>Note:</b> The GPS module only works on <b>port C</b> at the moment. Port C is the most isolated from RF noise from the MCU, and having Tessel doing a lot of processing will make getting a lock harder. The time between seeing satellites and actually getting a lock is dependent on the satellite. Be in view of the open sky for best results (and even then it may take a while to get a lock). Once the module has a lock, the lock should stay for a while.")
 - i++
-+normal_row(i, modulesPlugged_filepath +  thismod + "-portc.jpeg", plugIn.replace('#{module}', thismod.toUpperCase()).replace('#{port}', 'C'))
++normal_row(i, modulesPlugged_filepath +  thismod + "-portc.jpeg", render(plugIn, {'module': thismod.toUpperCase(), 'port': 'C'}))
 - i++
-+normal_row(i, moduleCorners_filepath + thismod + ".jpg", install.replace('#{package}', pkg))
++normal_row(i, moduleCorners_filepath + thismod + ".jpg", render(install, {'package': pkg}))
 - i++
 +displayCode(i, code.code, thismod)
 - i++
-+normal_row(i, moduleGifs_filepath + thismod + ".gif", push.replace('#{module}', thismod) + doThis + bonus + moreInfo)
++normal_row(i, moduleGifs_filepath + thismod + ".gif", render(push, {'module': thismod}) + doThis + bonus + moreInfo)
 - i++
 +seeForums(i, thismod, thismod.toUpperCase())

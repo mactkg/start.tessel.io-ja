@@ -108,10 +108,20 @@ block content
       - var moduleSpecial_filepath = s3url+"modules_special/"
       - var moduleDocs_filepath = "https://github.com/tessel/"
 
+      - render = function(s, d) {
+      -   d = d || {};
+      -   return s.replace(/(\\)?#\{([-_#.a-zA-Z0-9]+)}/g, function(_, e, key) {
+      -     if (e) {
+      -       return _;
+      -     }
+      -     return d[key] || '';
+      -   });
+      - }
+
       - var plugIn = "#{module}モジュールをTesselの<b>ポート#{port}</b>に挿しこんでください。このとき、六角形のTesselロゴの面が裏側、電子部品が有る側を表側になるようにしてください。最後に、TesselとパソコンをUSBケーブルで接続してください。"
       - var install = "以下のコマンドを入力して、パッケージをインストールしてください。<code><cli>npm install #{package}</cli></code>"
 
-      - var push = "以下のコマンドを入力してください。<code><cli>tessel run #{module}.js</cli></code><br/>"
+      - var push = "以下のコマンドを入力してください。<code><cli>tessel run #{module}.js #{option}</cli></code><br/>"
 
       - var moreInfo1 = "<br/><br/>To see what else you can do with the "
       - var moreInfo2 = " module, see the module docs <a href='"

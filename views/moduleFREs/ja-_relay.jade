@@ -12,12 +12,12 @@
 - i++
 +normal_row(i, moduleSpecial_filepath +  "relay-wires" + ".jpeg", "If you have something to turn on and off with the Relay module, cut the power wire, strip the ends to expose the wire, and insert the two exposed ends into port 1 on the Relay module. (If you don't have something to plug in at the moment, you can still continue; you won't see anything turn on or off, but the relay makes an audible clicking noise when it latches.)")
 - i++
-+normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", plugIn.replace('#{module}', thismod).replace('#{port}', 'A'))
++normal_row(i, modulesPlugged_filepath +  thismod + ".jpeg", render(plugIn, {'module': thismod, 'port': 'A'}))
 - i++
-+normal_row(i, moduleCorners_filepath + thismod + ".jpg", install.replace('#{package}', pkg))
++normal_row(i, moduleCorners_filepath + thismod + ".jpg", render(install, {'package': pkg}))
 - i++
 +displayCode(i, code.code, thismod)
 - i++
-+normal_row(i, moduleGifs_filepath + thismod + ".gif", push.replace('#{module}', thismod) + doThis + bonus + moreInfo)
++normal_row(i, moduleGifs_filepath + thismod + ".gif", render(push, {'module': thismod}) + doThis + bonus + moreInfo)
 - i++
 +seeForums(i, thismod, thismod)
