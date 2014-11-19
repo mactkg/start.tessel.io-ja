@@ -5,9 +5,9 @@ block head
 block content
   .row
     .large-12.columns.fre-container#anchor
-      h1 Install Tessel
+      h1 Tesselのインストール
 
-      p Select the operating system you are working on.
+      p OSを選んでください。
 
       dl#install-tabs(class="tabs contained three-up" data-tab)
         dd.active
@@ -19,50 +19,46 @@ block content
 
       .tabs-content#install-content
         .content.active#tab-osx
-          p
-            a(href="http://nodejs.org") Node.js
-            |  is a prerequisite for installing the Tessel command line. You can install it from the <a href="http://nodejs.org">official website</a>, or if you have <a href="http://brew.sh">brew</a> installed:</p>
+          p   Tesselのコマンドラインをインストールするためには、あらかじめ<a href="http://nodejs.org"> Node.js</a>をインストールしておく必要があります。Node.jsは<a href="http://nodejs.org">オフィシャルサイト</a>からインストールできます。<a href="http://brew.sh">Homebrew</a>を使えば以下のコマンドでインストールできます。</p>
           code
             cli brew install node
-          p Once Node.js is installed, run this installation script from your terminal
+          p Node.jsをインストールしたら、以下のインストールスクリプトをコマンドラインに打ちこんでください。
             code
               cli npm install -g tessel
-          p If the installation didn't work, please post the error message to our <a href="http://forums.tessel.io/category/installation-issues">forums</a> and we'll help you out.</i>
-          p If the scripts ran without errors, proceed to <a href="#firmware">update the firmware</a>.
+          p インストールに失敗した場合は、<a href="http://forums.tessel.io/category/installation-issues">フォーラム</a>にエラーメッセージを投稿してください。</i>
+          p エラーもなくスクリプトを実行できたら、 <a href="#firmware">ファームウェアのアップデート</a>に進んでください。
 
         .content#tab-linux
-          p
-            a(href="http://nodejs.org") Node.js
-            |  is a prerequisite for installing the Tessel command line. You can install it from the <a href="http://nodejs.org">official website</a> or following <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">these instructions for your package manager</a>.
-          p If you are running Ubuntu <i>13.10 or later</i>, you can run this:
+          p Tesselのコマンドラインをインストールするためには、あらかじめ<a href="http://nodejs.org">Node.js</a>をインストールしておく必要があります。Node.jsは<a href="http://nodejs.org">オフィシャルサイト</a>か<a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">パッケージマネージャー</a>からインストールできます。
+          p Ubuntu<i>13.10</i>以降のOSを使っている場合は、以下のコマンドを実行してください。
           code
             cli apt-get install nodejs nodejs-legacy;
-          p Once Node is installed, run this in your terminal:
+          p 既にNode.jsが入っている場合は、コマンドラインに以下のように書き込んでください。
           code
             cli apt-get install libusb-1.0-0-dev;
             cli npm install -g tessel
-          p If the installation didn't work, please post the error message to our <a href="http://forums.tessel.io/category/installation-issues">forums</a> and we'll help you out.</i>
-          p If the scripts ran without errors, proceed to <a href="#firmware">update the firmware</a>.
+          p インストールに失敗した場合は、<a href="http://forums.tessel.io/category/installation-issues">フォーラム</a>にエラーメッセージを投稿してください。</i>
+          p エラーもなくスクリプトを実行できたら、<a href="#firmware">ファームウェアのアップデート</a>に進んでください。
 
         .content#tab-pc
-          p On Windows, Tessel drivers will install automatically when you plug in.
+          p Tesselをパソコンと接続すると自動的にドライバーがインストールされます。
           p On Windows 7, you may receive the notification "Device driver software was not successfully installed". If you do, click on the notification, click the "Change settings..." button, and then select "Install driver software from Windows Update if it is not found on my computer." Save changes and re-try.
           p Next, install <a href="http://nodejs.org">Node.JS</a>. You need this to interact with Tessel from the command line.
           p After installing the Tessel drivers and Node.js, run this in cmd.exe:
           code
             cli npm install -g tessel
-          p If the installation didn't work, please post the error message to our <a href="http://forums.tessel.io/category/installation-issues">forums</a> and we'll help you out.</i>
-          p If the scripts ran without errors, proceed to <a href="#firmware">update the firmware</a>.
+          p インストールに失敗した場合は、<a href="http://forums.tessel.io/category/installation-issues">フォーラム</a>にエラーメッセージを投稿してください。</i>
+          p エラーもなくスクリプトを実行できたら、<a href="#firmware">ファームウェアのアップデート</a>に進んでください。
 
   .row
     .large-12.columns.fre-container
 
-      h3#firmware Update Tessel's Firmware
-      p Plug Tessel into your computer via USB. In the command line, run
+      h3#firmware ファームウェアのアップデート
+      p TesselとパソコンをUSBケーブルでつなぎ、コマンドラインに以下のように入力してください。
         code
           cli tessel update
-      p The lights should blink yellow and red during the firmware upload.
-      p Once the firmware update is complete, continue to the next step.
+      p ファームウェアの書き換え中は、黄色と赤のLEDが点滅します。
+      p ファームウェアのアップデートが完了したら、次のステップへ進みましょう。
 
 
 block bottom_nav

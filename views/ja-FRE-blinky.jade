@@ -7,49 +7,50 @@ block content
         img(style="margin-top:-30px; max-width=253px; float: right;" src='#{s3url}tessel-plugged.jpg')
       .large-8.columns
         .row
-          h1 Hello, (Physical) World!
+          h1 こんにちは、（現実）世界！
           p
-          p In your command line, make a folder for your Tessel code, change directory into that folder, and then initialize <a href="https://www.npmjs.org/">npm</a> in that folder:
+          p コマンドライン上でTesselのプログラムを保存するためのフォルダーを作り、そのフォルダー内に移動し、フォルダー内の<a href="https://www.npmjs.org/">npm</a>を初期化します。
           code
             cli mkdir tessel-code
             cli cd tessel-code
             cli npm init
-          p You can press enter at each option within npm init to accept npm's defaults.
-          p Great! Now you're set up to run code on Tessel.
+          p 全てのオプションで何も打ちこまずにenterキーを押すとnpmはデフォルトに設定されます。
+          p おつかれさまでした！Tesselを動かすための準備はこれでおしまいです。
         .row
           .greyBar(style="height:2px;")
         .row
-          p Blinking some lights is the "Hello World" of hardware.
-          p Make a new file in your "tessel-code" directory called "blinky.js", and copy/paste this code into it:
+          p LEDを点滅させることがハードウェアにおける「Hello World」です。
+          p  「tessel-code」フォルダの中に「blinky.js」を作り、その中に以下の内容をコピー＆ペーストしてください。
 
           pre.prettyprint
             code.
-              // Import the interface to Tessel hardware
+              // ハードウェアのTesselのためのインターフェースを代入します。
               var tessel = require('tessel');
 
-              // Set the led pins as outputs with initial states
+              // LEDピンの初期状態をアウトプットに設定します。
               // Truthy initial state sets the pin high
-              // Falsy sets it low.
+              // 真の初期状態はピンをHighに設定します。
+              // 偽はLowに設定します。
               var led1 = tessel.led[0].output(1);
               var led2 = tessel.led[1].output(0);
 
               setInterval(function () {
                   console.log("I'm blinking! (Press CTRL + C to stop)");
-                  // Toggle the led states
+                  // LEDが交互に点灯します。
                   led1.toggle();
                   led2.toggle();
               }, 100);
           p
 
-          p In your command line, enter
+          p コマンドラインに以下のように書き込んで、enterを押してください。
 
           p.bigCode <code><cli>tessel run blinky.js</cli></code>
 
-          p to run your code in Tessel's RAM.
+          p プログラムがTesselのRAMメモリ上で実行されます。
           
-          p <b>Look at your Tessel!</b> The blue and green LEDs on your Tessel's LED panel should blink back and forth.
+          p <b>Tesselを見てください!</b> 青と緑のLEDが交互に点灯していますね。
 
-          p <b>Bonus:</b> mess with the code to make the LEDs blink in sync.
+          p <b>おまけ</b>：2つのLEDが同時に点滅するように、プログラムを書き換えてみましょう。
 
 block bottom_nav
   .row
